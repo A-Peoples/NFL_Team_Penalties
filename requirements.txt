@@ -1,0 +1,6 @@
+sportsdataverse
+pandas
+numpy
+matplotlib
+xgboost==1.6.2
+streamlit
