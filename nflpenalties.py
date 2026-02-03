@@ -15,7 +15,7 @@ pbp, roster = load_data()
 
 team_list = sorted(pbp['penalty_team'].unique().dropna().tolist())
 
-team_filt = st.sidebar.selectbox('Choose team: ', team_list)
+team_filt = st.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2023, 2024, 2024)
 pbp_team_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt)) & (pbp['penalty_team'] == team_filt)]
 pbp_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt))]
