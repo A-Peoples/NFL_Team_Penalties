@@ -8,15 +8,15 @@ import streamlit as st
 st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 @st.cache_data()
 def load_data():
-  pbp = sdv.nfl.load_nfl_pbp((range(2022, 2024+1)), return_as_pandas=True)
-  roster = sdv.nfl.load_nfl_rosters(range(2022, 2024+1), return_as_pandas=True)
+  pbp = sdv.nfl.load_nfl_pbp((range(2023, 2024+1)), return_as_pandas=True)
+  roster = sdv.nfl.load_nfl_rosters(range(2023, 2024+1), return_as_pandas=True)
   return pbp, roster
 pbp, roster = load_data()
 
 team_list = sorted(pbp['penalty_team'].unique().dropna().tolist())
 
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
-year_filt = st.slider('Year Details: ', 2022, 2024, 2024)
+year_filt = st.slider('Year Details: ', 2023, 2024, 2024)
 pbp_team_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt)) & (pbp['penalty_team'] == team_filt)]
 pbp_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt))]
 
