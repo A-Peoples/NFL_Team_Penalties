@@ -27,11 +27,11 @@ with tab_yearspan:
   team_pen = pbp_team_filt.groupby(['penalty_team', 'season']).agg({'penalty' ['count'],
                                                         }).reset_index()
 
-  avg_pen = pbp_filt.groupby(['season']).agg({'penalty' ['count'],
+  avg_pen = pbp_filt.groupby(['season']).agg({'penalty': ['count'],
                                                         }).reset_index()
   avg_pen['penalty'] = avg_pen['penalty'] / 32
-  avg_pen = avg_pen.rename(columns={'penalty_team_' penalty_team,
-                                      'season_' season})
+  avg_pen = avg_pen.rename(columns={'penalty_team_': penalty_team,
+                                      'season_' 'season'})
 
   team_pen.columns = list(map(_.join, team_pen.columns))
   team_pen = team_pen.rename(columns={'penalty_team_' penalty_team,
