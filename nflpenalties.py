@@ -22,7 +22,7 @@ pbp_team_filt = pbp.loc[((pbp['home_team'] == team_filt)  (pbp['away_team'] == t
 pbp_filt = pbp.loc[((pbp['home_team'] == team_filt)  (pbp['away_team'] == team_filt))]
 
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
-with tab_yearspan
+with tab_yearspan:
   st.header('Team Penalties Timespan')
   team_pen = pbp_team_filt.groupby(['penalty_team', 'season']).agg({'penalty' ['count'],
                                                         }).reset_index()
@@ -38,7 +38,7 @@ with tab_yearspan
                                       'season_' season})
 
   st.line_chart(data=team_pen, x='season', y='penalty_count', x_label='Season', y_label='Penalties', width=stretch, height=content, use_container_width=None)
-with tab_player
+with tab_player:
   st.header('Top 20 Player Penalties')
   pen_person = pbp_team_filt.groupby(['penalty_player_name', 'penalty_player_id', 'season', 'penalty_team']).agg({'penalty' 'count'}).reset_index()
   pen_person = pen_person.loc[(pen_person['penalty_team'] == team_filt) & (pen_person['season'] == year_filt)]
@@ -49,14 +49,14 @@ with tab_player
   pen_person = pen_person.loc[(pen_person['penalty_player_id'].isin(roster['gsis_id']))]
   st.bar_chart(data=pen_person_filt, x='penalty_player_name', y='penalty', x_label='Total Penalties', y_label='Player', color=None, horizontal=True, sort=True, stack=None, width=stretch, height=content, use_container_width=None)
   pen_person_filt = pen_person_filt[-1]
-with tab_types
+with tab_types:
   st.header('Common Team Penalties')
   pen_type = pbp_team_filt.groupby(['penalty_team', 'season', 'penalty_type']).agg({'penalty' 'count'}).reset_index()
 
   st.bar_chart(data=pen_type, x='penalty_type', y='penalty', x_label='Total Penalties', y_label='Penalty Type', color=None, horizontal=True, sort=True, stack=None, width=stretch, height=content, use_container_width=None)
 
   plt.show()
-with tab_positions
+with tab_positions:
   st.header('Position Penalties')
   player_lists = list(pen_person['penalty_player_id'])
 
