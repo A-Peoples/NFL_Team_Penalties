@@ -8,7 +8,7 @@ import streamlit as st
 
 st.set_page_config(page_title='NFL Penalty Charting', layout=wide)
 @st.cache_data()
-def load_data()
+def load_data():
   pbp = sdv.nfl.load_nfl_pbp((range(2023, 2024+1)), return_as_pandas=True)
   roster = sdv.nfl.load_nfl_rosters(range(2023, 2024+1), return_as_pandas=True)
   return pbp, roster
