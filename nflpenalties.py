@@ -24,7 +24,7 @@ pbp_filt = pbp.loc[((pbp['home_team'] == team_filt)  (pbp['away_team'] == team_f
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
 with tab_yearspan:
   st.header('Team Penalties Timespan')
-  team_pen = pbp_team_filt.groupby(['penalty_team', 'season']).agg({'penalty' ['count'],
+  team_pen = pbp_team_filt.groupby(['penalty_team', 'season']).agg({'penalty': ['count'],
                                                         }).reset_index()
 
   avg_pen = pbp_filt.groupby(['season']).agg({'penalty': ['count'],
@@ -66,7 +66,7 @@ with tab_positions:
   roster_filt = roster_filt[['gsis_id', 'position', 'depth_chart_position', 'headshot_url', 'full_name']]
   roster_filt = roster_filt.rename(columns={'gsis_id' 'penalty_player_id'})
   roster_filt_merge = pen_person.merge(roster_filt, on='penalty_player_id', how='left')
-  pos_pen = roster_filt_merge.groupby(['depth_chart_position']).agg({'penalty' sum}).reset_index()
+  pos_pen = roster_filt_merge.groupby(['depth_chart_position']).agg({'penalty': sum}).reset_index()
   pos_pen = pos_pen.sort_values(by=penalty, ascending=True).reset_index()
   st.bar_chart(data=pos_pen, x='depth_chart_position', y='penalty', x_label='Total Penalties', y_label='Position', color=None, horizontal=True, sort=True, stack=None, width=stretch, height=content, use_container_width=None)
 
