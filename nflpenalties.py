@@ -31,11 +31,11 @@ with tab_yearspan:
                                                         }).reset_index()
   avg_pen['penalty'] = avg_pen['penalty'] / 32
   avg_pen = avg_pen.rename(columns={'penalty_team_': penalty_team,
-                                      'season_' 'season'})
+                                      'season_': 'season'})
 
   team_pen.columns = list(map(_.join, team_pen.columns))
-  team_pen = team_pen.rename(columns={'penalty_team_' penalty_team,
-                                      'season_' season})
+  team_pen = team_pen.rename(columns={'penalty_team_': penalty_team,
+                                      'season_': season})
 
   st.line_chart(data=team_pen, x='season', y='penalty_count', x_label='Season', y_label='Penalties', width=stretch, height=content, use_container_width=None)
 with tab_player:
