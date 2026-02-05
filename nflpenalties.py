@@ -11,7 +11,7 @@ st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 def load_data():
   team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
   return teampen
-team_list = load_data():
+team_list = load_data()
 
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2023, 2024, 2024)
