@@ -8,11 +8,7 @@ import streamlit as st
 
 st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 @st.cache_data()
-def load_data():
-  pbp = sdv.nfl.load_nfl_pbp((range(2023, 2024+1)), return_as_pandas=True)
-  roster = sdv.nfl.load_nfl_rosters(range(2023, 2024+1), return_as_pandas=True)
-  return pbp, roster
-pbp, roster = load_data()
+
 
 team_list = sorted(pbp['penalty_team'].unique().dropna().tolist())
 
@@ -24,19 +20,8 @@ pbp_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
 with tab_yearspan:
   st.header('Team Penalties Timespan')
-  team_pen = pbp_team_filt.groupby(['penalty_team', 'season']).agg({'penalty': ['count'],
-                                                        }).reset_index()
-
-  avg_pen = pbp_filt.groupby(['season']).agg({'penalty': ['count'],
-                                                        }).reset_index()
-  avg_pen['penalty'] = avg_pen['penalty'] / 32
-  avg_pen = avg_pen.rename(columns={'penalty_team_': "penalty_team",
-                                      'season_': "season"})
-
-  team_pen.columns = list(map("_".join, team_pen.columns))
-  team_pen = team_pen.rename(columns={'penalty_team_': "penalty_team",
-                                      'season_': "season"})
-
+  team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
+  team_pen = team_pen.loc[team_pen['team'] == "team_filt"]
   st.line_chart(data=team_pen, x='season', y='penalty_count', x_label='Season', y_label='Penalties', width="stretch", height="content", use_container_width=None)
 with tab_player:
   st.header('Top 20 Player Penalties')
