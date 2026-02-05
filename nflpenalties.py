@@ -18,7 +18,7 @@ year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
 with tab_yearspan:
-  st.header('Team Penalties Timespan')
+  st.header(team_filt + 'Team Penalties Timespan')
   
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
   st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties')
