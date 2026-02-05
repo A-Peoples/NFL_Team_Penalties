@@ -12,7 +12,7 @@ def load_data():
   team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
   return team_pen
 team_list = load_data()
-team_list = team_list['penalty_team'].tolist()
+team_list = team_list['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2023, 2024, 2024)
 pbp_team_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt)) & (pbp['penalty_team'] == team_filt)]
