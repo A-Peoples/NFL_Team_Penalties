@@ -29,7 +29,6 @@ with tab_yearspan:
 with tab_player:
   st.header(team_filt + ' Top 25 Player Penalties')
   pen_person = pen_person.loc[(pen_person['season'] == year_filt) & (pen_person['penalty_team'] == team_filt)]
-  pen_person = pen_person.head(25)
   st.bar_chart(data=pen_person, x='penalty_player_name', y='penalty', x_label='Total Penalties', y_label='Player', color=color_filt, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
 with tab_types:
   st.header(team_filt + ' Common Team Penalties')
