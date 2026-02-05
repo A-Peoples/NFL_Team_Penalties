@@ -11,9 +11,11 @@ st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 def load_data():
   team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
   pen_person = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_person.csv")
+  pen_type = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_type.csv")
   return team_pen
   return pen_person
-team_pen, pen_person = load_data()
+  return pen_type
+team_pen, pen_person, pen_type = load_data()
 team_list = team_pen['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
@@ -27,12 +29,10 @@ with tab_yearspan:
 with tab_player:
   st.header('Top 20 Player Penalties')
   pen_person = pen_person.loc[(pen_person['season'] == 'year_filt') & (pen_person['penalty_team'] == 'team_filt')]
-  st.bar_chart(data=pen_person_filt, x='penalty_player_name', y='penalty', x_label='Total Penalties', y_label='Player', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
-  pen_person_filt = pen_person_filt[::-1]
+  st.bar_chart(data=pen_person, x='penalty_player_name', y='penalty', x_label='Total Penalties', y_label='Player', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
 with tab_types:
   st.header(team_filt + ' Common Team Penalties')
-  pen_type = pbp_team_filt.groupby(['penalty_team', 'season', 'penalty_type']).agg({'penalty': 'count'}).reset_index()
-
+  pen_type = pen_type.loc[(pen_type['season'] == 'year_filt') & (pen_type['penalty_team'] == 'team_filt')]
   st.bar_chart(data=pen_type, x='penalty_type', y='penalty', x_label='Total Penalties', y_label='Penalty Type', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
 
   plt.show()
