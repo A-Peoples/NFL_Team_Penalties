@@ -27,7 +27,7 @@ with tab_yearspan:
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
   st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties', color=color_filt)
 with pen_yards:
-  st.header(team_filt + ' Team Penalties Yards Timespan')
+  st.header(team_filt + ' Team Penalty Yards Timespan')
   
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
   st.line_chart(data=team_pen, x='season', y='penalty_yards', x_label='Season', y_label='Penalties', color=color_filt)
