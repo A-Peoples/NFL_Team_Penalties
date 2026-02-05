@@ -25,7 +25,7 @@ with tab_yearspan:
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
   st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties')
 with tab_player:
-  st.header('Top 20 Player Penalties')
+  st.header(team_filt + ' Player Penalties')
   pen_person = pen_person.loc[(pen_person['season'] == year_filt) & (pen_person['penalty_team'] == team_filt)]
   st.bar_chart(data=pen_person, x='penalty_player_name', y='penalty', x_label='Total Penalties', y_label='Player', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
 with tab_types:
