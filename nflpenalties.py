@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 @st.cache_data()
 
-team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
+team_pen = pd.read_csv("")
 team_list = sorted(team_pen['penalty_team'].unique().dropna().tolist())
 
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
