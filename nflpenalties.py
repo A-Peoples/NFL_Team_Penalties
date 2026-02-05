@@ -15,7 +15,8 @@ def load_data():
   return team_pen, pen_person, pen_type
 team_pen, pen_person, pen_type = load_data()
 team_list = team_pen['penalty_team'].dropna().unique().tolist()
-team_filt = st.sidebar.selectbox('Choose team: ', team_list)
+team_filt = st.sidebar.multiselect('Choose team: ', team_list, default=[team_list[0]])
+
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
