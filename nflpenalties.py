@@ -21,7 +21,7 @@ with tab_yearspan:
   st.header('Team Penalties Timespan')
   
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
-  st.line_chart(data=team_pen, x='season', y='penalty_count', x_label='Season', y_label='Penalties')
+  st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties')
 with tab_player:
   st.header('Top 20 Player Penalties')
   pen_person = pbp_team_filt.groupby(['penalty_player_name', 'penalty_player_id', 'season', 'penalty_team']).agg({'penalty': 'count'}).reset_index()
