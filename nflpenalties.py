@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 @st.cache_data()
 
-team_pen = pd.read_csv("")
+team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
 team_list = sorted(team_pen['penalty_team'].unique().dropna().tolist())
 
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
@@ -21,7 +21,7 @@ tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Ti
 with tab_yearspan:
   st.header('Team Penalties Timespan')
   
-  team_pen = team_pen.loc[team_pen['team'] == "team_filt"]
+  team_pen = team_pen.loc[team_pen['penalty_team'] == "team_filt"]
   st.line_chart(data=team_pen, x='season', y='penalty_count', x_label='Season', y_label='Penalties', width="stretch", height="content", use_container_width=None)
 with tab_player:
   st.header('Top 20 Player Penalties')
