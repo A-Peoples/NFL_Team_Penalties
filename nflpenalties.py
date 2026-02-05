@@ -30,7 +30,7 @@ with pen_yards:
   st.header(team_filt + ' Penalty Yards Timespan')
   
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
-  st.line_chart(data=team_pen, x='season', y='penalty_yards', x_label='Season', y_label='Penalties', color=color_filt)
+  st.line_chart(data=team_pen, x='season', y='penalty_yards', x_label='Season', y_label='Yards Lost', color=color_filt)
 with tab_player:
   st.header(team_filt + ' Player Penalty Count')
   pen_person = pen_person.loc[(pen_person['season'] == year_filt) & (pen_person['penalty_team'] == team_filt)]
