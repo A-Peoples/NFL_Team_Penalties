@@ -12,9 +12,7 @@ def load_data():
   team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
   pen_person = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_person.csv")
   pen_type = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_type.csv")
-  return team_pen
-  return pen_person
-  return pen_type
+  return team_pen, pen_person, pen_type
 team_pen, pen_person, pen_type = load_data()
 team_list = team_pen['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
