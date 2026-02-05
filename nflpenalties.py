@@ -18,7 +18,7 @@ team_list = team_pen['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 
-tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
+tab_yearspan, tab_types, tab_player = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties'])#, 'Position Penalties'])
 with tab_yearspan:
   st.header(team_filt + ' Team Penalties Timespan')
   
@@ -33,19 +33,9 @@ with tab_types:
   st.header(team_filt + ' Common Team Penalties')
   pen_type = pen_type.loc[(pen_type['season'] == year_filt) & (pen_type['penalty_team'] == team_filt)]
   st.bar_chart(data=pen_type, x='penalty_type', y='penalty', x_label='Total Penalties', y_label='Penalty Type', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
-
-  plt.show()
-with tab_positions:
-  st.header('Position Penalties')
-  player_lists = list(pen_person['penalty_player_id'])
-
-  roster_filt = roster.loc[(roster['gsis_id'].isin(pen_person['penalty_player_id'])) & (roster['season'] == year_filt)]
-  pen_person = pen_person.loc[(pen_person['penalty_player_id'].isin(roster['gsis_id']))]
-
-  roster_filt = roster_filt[['gsis_id', 'position', 'depth_chart_position', 'headshot_url', 'full_name']]
-  roster_filt = roster_filt.rename(columns={'gsis_id': 'penalty_player_id'})
-  roster_filt_merge = pen_person.merge(roster_filt, on='penalty_player_id', how='left')
-  pos_pen = roster_filt_merge.groupby(['depth_chart_position']).agg({'penalty': sum}).reset_index()
-  pos_pen = pos_pen.sort_values(by="penalty", ascending=True).reset_index()
-  st.bar_chart(data=pos_pen, x='depth_chart_position', y='penalty', x_label='Total Penalties', y_label='Position', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
+#with tab_positions:
+  #st.header('Position Penalties')
+  
+  #pos_pen = pos_pen.sort_values(by="penalty", ascending=True).reset_index()
+  #st.bar_chart(data=pos_pen, x='depth_chart_position', y='penalty', x_label='Total Penalties', y_label='Position', color=None, horizontal=True, sort=True, stack=None, width="stretch", height="content", use_container_width=None)
 
