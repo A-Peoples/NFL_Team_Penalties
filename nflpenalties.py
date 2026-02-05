@@ -10,7 +10,7 @@ st.set_page_config(page_title='NFL Penalty Charting', layout="wide")
 @st.cache_data()
 def load_data():
   team_pen = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/penalty_count.csv")
-  return teampen
+  return team_pen
 team_list = load_data()
 team_list = team_list['penalty_team'].tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
