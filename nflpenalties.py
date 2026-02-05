@@ -15,8 +15,6 @@ team_list = load_data()
 team_list = team_list['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2023, 2024, 2024)
-pbp_team_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt)) & (pbp['penalty_team'] == team_filt)]
-pbp_filt = pbp.loc[((pbp['home_team'] == team_filt) | (pbp['away_team'] == team_filt))]
 
 tab_yearspan, tab_types, tab_player, tab_positions = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties', 'Position Penalties'])
 with tab_yearspan:
