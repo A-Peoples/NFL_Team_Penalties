@@ -19,13 +19,13 @@ team_list = team_pen['penalty_team'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 colors = colors.loc[colors['team_abbr'] == team_filt]
-color = color['team_color'].iloc[0]
+color_filt = colors['team_color'].iloc[0]
 tab_yearspan, tab_types, tab_player = st.tabs(['Team Penalties Timespan', 'Common Team Penalties', 'Top 20 Player Penalties'])#, 'Position Penalties'])
 with tab_yearspan:
   st.header(team_filt + ' Team Penalties Timespan')
   
   team_pen = team_pen.loc[team_pen['penalty_team'] == team_filt]
-  st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties', color=color)
+  st.line_chart(data=team_pen, x='season', y='penalty', x_label='Season', y_label='Penalties', color=color_filt)
 with tab_player:
   st.header(team_filt + ' Top 25 Player Penalties')
   pen_person = pen_person.loc[(pen_person['season'] == year_filt) & (pen_person['penalty_team'] == team_filt)]
