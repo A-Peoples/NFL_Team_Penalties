@@ -20,7 +20,7 @@ team_list = names['team_name'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 names_var = names.loc[names['team_name'] == team_filt]
 team_fun_filt = names_var['team_abbr'].iloc[0]
-st.header(str(names_var['team_fun_filt']))
+st.header(team_fun_filt)
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 colors_sing = colors.loc[colors['team_abbr'] == team_fun_filt]
 color_filt = colors_sing['team_color'].iloc[0]
