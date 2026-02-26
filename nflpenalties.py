@@ -17,7 +17,7 @@ def load_data():
   return team_pen, pen_person, pen_type, colors, names
 team_pen, pen_person, pen_type, colors, names = load_data()
 team_list = names['team_name'].dropna().unique().tolist()
-team_filt = st.sidebar.selectbox('Choose team: ' +  str(team_list))
+team_filt = st.sidebar.selectbox('Choose team: ', str(team_list))
 names_var = names.loc[names['team_abbr'] == team_filt]
 team_fun_filt = names_var['team_abbr'].iloc[0]
 st.header(str(team_fun_filt))
