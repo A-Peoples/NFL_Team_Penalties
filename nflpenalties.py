@@ -18,8 +18,8 @@ def load_data():
 team_pen, pen_person, pen_type, colors, names = load_data()
 team_list = names['team_name'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
-names_var = names.loc[team_filt['abbv_name'] == team_filt]
-team_fun_filt = names_var['abbv_name'].iloc[0]
+names_var = names.loc[team_filt['team_abbr'] == team_filt]
+team_fun_filt = names_var['team_abbr'].iloc[0]
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 colors_sing = colors.loc[colors['team_abbr'] == team_fun_filt]
 color_filt = colors_sing['team_color'].iloc[0]
