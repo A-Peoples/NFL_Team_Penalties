@@ -1,37 +1,33 @@
-,team_name,team_abbr
-0,Arizona Cardinals,ARI
-1,Atlanta Falcons,ATL
-2,Baltimore Ravens,BAL
-3,Buffalo Bills,BUF
-4,Carolina Panthers,CAR
-5,Chicago Bears,CHI
-6,Cincinnati Bengals,CIN
-7,Cleveland Browns,CLE
-8,Dallas Cowboys,DAL
-9,Denver Broncos,DEN
-10,Detroit Lions,DET
-11,Green Bay Packers,GB
-12,Houston Texans,HOU
-13,Indianapolis Colts,IND
-14,Jacksonville Jaguars,JAX
-15,Kansas City Chiefs,KC
-16,Los Angeles Rams,LA
-17,Los Angeles Chargers,LAC
-18,Los Angeles Rams,LAR
-19,Las Vegas Raiders,LV
-20,Miami Dolphins,MIA
-21,Minnesota Vikings,MIN
-22,New England Patriots,NE
-23,New Orleans Saints,NO
-24,New York Giants,NYG
-25,New York Jets,NYJ
-26,Oakland Raiders,OAK
-27,Philadelphia Eagles,PHI
-28,Pittsburgh Steelers,PIT
-29,San Diego Chargers,SD
-30,Seattle Seahawks,SEA
-31,San Francisco 49ers,SF
-32,St. Louis Rams,STL
-33,Tampa Bay Buccaneers,TB
-34,Tennessee Titans,TEN
-35,Washington Commanders,WAS
+,index,team_name,team_abbr
+0,0,Arizona Cardinals,ARI
+1,1,Atlanta Falcons,ATL
+2,2,Baltimore Ravens,BAL
+3,3,Buffalo Bills,BUF
+4,4,Carolina Panthers,CAR
+5,5,Chicago Bears,CHI
+6,6,Cincinnati Bengals,CIN
+7,7,Cleveland Browns,CLE
+8,8,Dallas Cowboys,DAL
+9,9,Denver Broncos,DEN
+10,10,Detroit Lions,DET
+11,11,Green Bay Packers,GB
+12,12,Houston Texans,HOU
+13,13,Indianapolis Colts,IND
+14,14,Jacksonville Jaguars,JAX
+15,15,Kansas City Chiefs,KC
+16,16,Los Angeles Rams,LA
+17,17,Los Angeles Chargers,LAC
+18,19,Las Vegas Raiders,LV
+19,20,Miami Dolphins,MIA
+20,21,Minnesota Vikings,MIN
+21,22,New England Patriots,NE
+22,23,New Orleans Saints,NO
+23,24,New York Giants,NYG
+24,25,New York Jets,NYJ
+25,27,Philadelphia Eagles,PHI
+26,28,Pittsburgh Steelers,PIT
+27,30,Seattle Seahawks,SEA
+28,31,San Francisco 49ers,SF
+29,33,Tampa Bay Buccaneers,TB
+30,34,Tennessee Titans,TEN
+31,35,Washington Commanders,WAS
