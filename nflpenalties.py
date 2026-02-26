@@ -13,9 +13,10 @@ def load_data():
   pen_person = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_person.csv")
   pen_type = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/pen_type.csv")
   colors = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/colors.csv")
-  return team_pen, pen_person, pen_type, colors
-team_pen, pen_person, pen_type, colors = load_data()
-team_list = team_pen['penalty_team'].dropna().unique().tolist()
+  names = pd.read_csv("https://raw.githubusercontent.com/A-Peoples/NFL_Team_Penalties/refs/heads/main/names.csv")
+  return team_pen, pen_person, pen_type, colors, names
+team_pen, pen_person, pen_type, colors, names = load_data()
+team_list = names['team_name'].dropna().unique().tolist()
 team_filt = st.sidebar.selectbox('Choose team: ', team_list)
 year_filt = st.slider('Year Details: ', 2016, 2024, 2024)
 colors_sing = colors.loc[colors['team_abbr'] == team_filt]
